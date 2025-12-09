@@ -22,8 +22,8 @@ const PORT = process.env.PORT || 8000;
 // CORS MIDDLEWARE
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
-    methods: "GET,POST,PUT,DELETE",
+    origin: "https://echowave-1.onrender.com", // <-- URL should be a string, no dot or slash at the end
+    methods: ["GET", "POST", "PUT", "DELETE"], // <-- array recommended
     credentials: true,
   })
 );
