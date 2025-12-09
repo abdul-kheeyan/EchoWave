@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext(null);
 
-const server ="https://echowave-5fdo.onrender.com";
+const server ="https://echowave-5fdo.onrender.com"; 
 
 const client = axios.create({
   baseURL: `${server}/api/v1/users`,
