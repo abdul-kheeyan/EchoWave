@@ -1,0 +1,138 @@
+.auth-container {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.auth-card {
+  width: 420px;
+  padding: 40px 35px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+  backdrop-filter: blur(18px);
+  animation: slideUp 0.5s ease;
+}
+
+.auth-avatar {
+  background: linear-gradient(135deg, #00d9ff, #006cff);
+}
+
+.auth-title {
+  font-size: 1.8rem;
+  text-align: center;
+  color: white;
+  margin-top: 10px;
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: #b8dfff;
+  margin-bottom: 25px;
+}
+
+.auth-form {
+  margin-top: 10px;
+}
+
+.auth-btn {
+  background: linear-gradient(135deg, #00c6ff, #0072ff) !important;
+  color: white !important;
+  padding: 12px;
+  border-radius: 10px !important;
+  margin-top: 15px !important;
+  box-shadow: 0 0 18px rgba(0, 200, 255, 0.4);
+  transition: 0.25s;
+}
+
+.auth-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.auth-footer a {
+  color: #00e1ff;
+}
+
+.toggle-text {
+  margin-top: 15px;
+  color: white;
+}
+
+.toggle-text span {
+  color: #00e1ff;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.toggle-text span:hover {
+  text-decoration: underline;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+input, input::placeholder {
+  color: #e5f4ff !important;      /* Light aqua/blue-ish text */
+}
+
+.MuiInputBase-input {
+  color: #e5f4ff !important;       /* MUI input ke internal text ko override */
+}
+
+.MuiFormLabel-root {
+  color: #9ac7ff !important;       /* Label color */
+}
+
+.MuiInputBase-root fieldset {
+  border-color: rgba(255,255,255,0.25) !important; /* Glassy outline */
+}
+
+input::placeholder {
+  color: rgba(150, 220, 255, 0.5) !important;
+}
+
+
+.success-msg {
+  color: #4caf50;
+  font-size: 14px;
+  margin-bottom: 8px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.error-msg {
+  color: #f44336;
+  font-size: 14px;
+  margin-bottom: 8px;
+  text-align: center;
+  font-weight: 600;
+}

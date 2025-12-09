@@ -1,0 +1,404 @@
+/* src/styles/videoComponent.css
+   Zoom-like responsive layout
+   - Left: chat column (sticky, send at bottom)
+   - Center: video grid (responsive tiles)
+   - Bottom: control bar with gradient "Icons" button
+   - Glassy dark theme with aqua/blue gradients + transitions
+*/
+
+/* -------------------------
+   Page & global settings
+-------------------------*/
+:root{
+  --bg-dark: #000000;
+  --panel-dark: rgba(10,10,10,0.68);
+  --glass-border: rgba(255,255,255,0.05);
+  --aqua-1: #00e5ff;
+  --aqua-2: #00a3ff;
+  --accent: #5b2bff;
+  --soft-white: rgba(255,255,255,0.92);
+  --shadow-1: 0 8px 30px rgba(0,0,0,0.7);
+}
+
+* { box-sizing: border-box; }
+html,body,#root { height: 100%; margin: 0; font-family: "Poppins", "Inter", system-ui, -apple-system, sans-serif; }
+
+/* animated subtle background like landing page */
+body {
+  background: radial-gradient(circle at 10% 10%, rgba(15,15,15,1) 0%, rgba(6,6,6,1) 40%, #040404 100%);
+  color: var(--soft-white);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow: hidden;
+}
+
+/* -------------------------
+   Main layout container
+-------------------------*/
+.meetVideoContainer {
+  background-image: url("../assets/back.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  height: calc(100vh - 0px);
+  display: grid;
+
+  /* FIXED: Removed right column → now only LEFT + CENTER */
+  grid-template-columns: 320px 1fr;
+
+  grid-template-rows: 1fr auto;
+  gap: 20px;
+  padding: 22px;
+  align-items: start;
+  width: 100vw;
+}
+
+@media (max-width: 1100px) {
+  .meetVideoContainer {
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 1fr auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .meetVideoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+    overflow-y: auto;
+  }
+}
+
+/* -------------------------
+   Chat column (left)
+-------------------------*/
+.chatRoom {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  height: calc(100vh - 140px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 18px;
+  border: 1px solid var(--glass-border);
+  padding: 18px;
+  box-shadow: var(--shadow-1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.chatContainer h1 {
+  margin: 0 0 12px 0;
+  text-align: center;
+  color: var(--aqua-1);
+  font-size: 28px;
+  letter-spacing: 0.6px;
+}
+
+.chattingDisplay {
+  flex: 1 1 auto;
+  background: rgba(255,255,255,0.02);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 14px;
+  overflow-y: auto;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.chattingDisplay > div {
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.chattingDisplay p { margin: 6px 0; color: #e6f7ff; }
+
+.chattingArea {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: auto;
+}
+
+.chattingArea input,
+.chattingArea textarea,
+#chat-input {
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 12px;
+  border-radius: 10px;
+  outline: none;
+  transition: transform .18s ease, box-shadow .18s ease;
+  width: 100%;
+}
+
+.chattingArea button {
+  min-width: 84px;
+  height: 44px;
+  border-radius: 28px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, var(--aqua-1), var(--aqua-2));
+  color: #00121a;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(0,160,255,0.12), inset 0 -2px 0 rgba(0,0,0,0.08);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.chattingArea button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0,160,255,0.18);
+}
+
+/* -------------------------
+   Main center area (video grid)
+-------------------------*/
+.conferenceView {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 18px;
+  padding: 14px;
+
+  width: 100%;
+
+  background: rgba(255,255,255,0.02);
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: var(--shadow-1);
+
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+}
+
+
+.conferenceView > div {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  border: 1px solid rgba(255,255,255,0.035);
+  transition: transform .18s ease, box-shadow .18s ease;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+}
+
+.conferenceView > div:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+}
+
+
+.conferenceView video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.conferenceView .my-big-video {
+  grid-column: 1 / -1;
+  height: 320px;
+  border-radius: 18px;
+}
+
+/* -------------------------
+   Local small preview (LEFT BOTTOM)
+-------------------------*/
+.meetUserVideo {
+  grid-column: 1 / 2;
+  grid-row: 2 / 2;
+
+  width: 320px;
+  height: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+
+  margin-top: auto;
+  margin-bottom: 16px;
+
+  align-self: end;
+  justify-self: center;
+
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.7);
+  transition: transform .18s ease;
+}
+
+.meetUserVideo:hover { transform: scale(1.02); }
+
+/* -------------------------
+   Bottom controls
+-------------------------*/
+.buttonContainers {
+  grid-column: 1 / -1;
+  grid-row: 2 / 3;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+
+  padding: 18px 0 30px 0;
+  align-self: end;
+}
+
+.buttonContainers .MuiIconButton-root,
+.buttonContainers button,
+.buttonContainers svg {
+  background: none !important;
+  border-radius: 14px;
+  padding: 10px;
+  color: #e6fbff;
+  border: 1px solid rgba(255,255,255,0.03);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.buttonContainers svg {
+  width: 50px !important;
+  height: 50px !important;
+  fill: #e6fbff !important;
+}
+
+.buttonContainers svg:hover{
+  transform: translateY(-6px);
+}
+
+.icons-pill {
+  min-width: 420px;
+  max-width: 66%;
+  padding: 16px 28px;
+  border-radius: 40px;
+  background: linear-gradient(90deg, #7a3bff, #3b2bff, #00a3ff);
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+  box-shadow: 0 18px 40px rgba(59,43,255,0.18);
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.icons-pill:hover { transform: translateY(-6px); }
+
+/* -------------------------
+   RIGHT PLACEHOLDER HIDE (FIX)
+-------------------------*/
+.meetVideoContainer > .rightPlaceholder {
+  display: none !important;
+}
+
+/* -------------------------
+   Responsive adjustments
+-------------------------*/
+@media (max-width: 1100px) {
+  .meetUserVideo { width: 260px; height: 160px; }
+  .icons-pill { min-width: 300px; }
+}
+
+@media (max-width: 760px) {
+  .chatRoom { order: 2; width: 100%; height: auto; }
+  .conferenceView { order: 1; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); max-height: none; }
+  .meetUserVideo { width: 100%; height: 220px; margin-top: 8px; }
+  .buttonContainers { padding-bottom: 40px; }
+  .icons-pill { width: calc(100% - 40px); }
+}
+
+/* -------------------------
+   Scrollbar
+-------------------------*/
+.chattingDisplay::-webkit-scrollbar,
+.conferenceView::-webkit-scrollbar { width: 8px; }
+.chattingDisplay::-webkit-scrollbar-thumb,
+.conferenceView::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.06);
+  border-radius: 12px;
+}
+
+/* -------------------------
+   Focus
+-------------------------*/
+button:focus, .MuiIconButton-root:focus, input:focus, textarea:focus {
+  outline: none;
+  box-shadow: 0 6px 22px rgba(0,170,255,0.12);
+}
+
+.chatRoom {
+  height: 28rem;
+}
+
+
+
+
+
+/* -------------------------
+   Mobile responsive layout (Zoom-style)
+-------------------------*/
+@media (max-width: 760px) {
+  .meetVideoContainer {
+    display: block;
+    padding: 8px;
+  }
+
+  /* Chat becomes collapsible or full width below video */
+  .chatRoom {
+    width: 100%;
+    height: 220px;
+    max-height: 35vh;
+    margin-top: 12px;
+    order: 2;
+    border-radius: 14px;
+    overflow-y: auto;
+  }
+
+  /* Video grid full width */
+  .conferenceView {
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    max-height: 60vh;
+    overflow-y: auto;
+    order: 1;
+  }
+
+  /* Local preview floats bottom-right */
+  .meetUserVideo {
+    position: fixed;
+    bottom: 80px; /* above controls */
+    right: 12px;
+    width: 120px;
+    height: 160px;
+    border-radius: 12px;
+    z-index: 999;
+    margin: 0;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.6);
+  }
+
+  /* Bottom controls fixed */
+  .buttonContainers {
+    position: fixed;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 420px;
+    justify-content: space-around;
+    padding: 10px 0;
+    background: rgba(0,0,0,0.25);
+    border-radius: 24px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    z-index: 998;
+  }
+
+  /* Icons pill full width */
+  .icons-pill {
+    width: 100%;
+    min-width: auto;
+    padding: 12px 0;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,155 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+.landingPageContainer {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+ 
+}
+
+.landingPageContainer nav {
+  padding-inline: 1.2rem;
+  padding-block: 1.6rem;
+  display: flex;
+  height: 1rem;
+  justify-content: space-between;
+  align-items: center;
+
+
+  /* 🔥 Glassmorphism Effect */
+  background: rgba(255, 255, 255, 0.1);   /* Light grayish with transparency */
+  backdrop-filter: blur(12px);            /* Glass blur */
+  -webkit-backdrop-filter: blur(12px);    /* Safari support */
+  border-radius: 16px;                    /* Smooth rounded corners */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15); /* Soft shadow */
+}
+
+.landingPageContainer nav h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #f1f1f1; /* White text for glassy effect */
+}
+
+.landingPageContainer nav .navlist {
+  display: flex;
+  gap: 1.6rem;
+  cursor: pointer;
+}
+
+.landingPageContainer nav .navlist p {
+  color: #e5e5e5; 
+  transition: 0.3s ease;
+}
+
+.landingPageContainer nav .navlist p:hover {
+  color: white;
+  transform: scale(1.05);
+}
+
+.navlist div[role="button"] {
+  color: #e5e5e5; 
+  transition: 0.3s ease;
+}
+
+.navlist div[role="button"]:hover {
+  color: white;
+  transform: scale(1.1);
+}
+
+
+.landingMainContainer {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 3rem;
+  height: 80vh;
+  align-items: center;
+}
+
+.landingMainContainer > div:nth-child(1) {
+  font-size: 1rem;
+}
+
+.landingMainContainer > div:nth-child(1) div[role='button'] {
+  background: #D97500;
+  width: fit-content;
+  padding: 0.5rem;
+  border-radius: 20px;
+  margin-top: 0.5rem;
+}
+
+/* st */
+.landingMainContainer > div:nth-child(1) div[role='button'] {
+  background: rgba(255, 255, 255, 0.15); /* light grayish glass */
+  backdrop-filter: blur(10px);           /* glass blur */
+  -webkit-backdrop-filter: blur(10px);
+  
+  padding: 0.9rem 1.8rem;
+  border-radius: 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.25); /* shiny border */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+
+  width: fit-content;
+  margin-top: 1.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.landingMainContainer > div:nth-child(1) div[role='button']:hover {
+  background: rgba(255, 255, 255, 0.25); /* brighter on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.55);
+}
+
+.landingMainContainer > div:nth-child(1) div[role='button'] a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* end */
+
+.landingMainContainer > div:nth-child(2) img {
+  height: 75vh;
+  width: auto;
+}
+
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 20px;
+  text-align: center;
+}
+
+.meetContainer {
+  display: flex;
+  padding-inline: 5px;
+  height: 80vh;
+  gap: 10vw;
+  justify-content: center;
+}
+
+.leftPanel {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.rightPanel {
+  display: flex;
+  align-items: center;
+}
+
+.rightPanel > img {
+  width: 30vw;
+  height: auto;
+  border-radius: 20px;
+}
