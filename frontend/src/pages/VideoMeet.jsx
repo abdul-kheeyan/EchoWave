@@ -20,7 +20,8 @@ import "../styles/videoComponent.css"; // plain CSS import (not CSS module)
 
 
 // SERVER URL: use .env VITE_SERVER_URL or fallback
-const SERVER_URL = "https://echowave-5fdo.onrender.com";
+const SERVER_URL = import.meta.env.VITE_SERVER_URL || "https://echowave-5fdo.onrender.com";
+
 
 const peerConfig = {
   iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
